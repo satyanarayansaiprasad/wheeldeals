@@ -133,7 +133,7 @@ section {
 }
 
 .breadcrumbs .page-header h2 {
-  font-size: 56px;
+  font-size: 40px;
   font-weight: 500;
   color: #fff;
   font-family: var(--font-secondary);
@@ -300,6 +300,13 @@ section {
     min-width: 200px;
   }
 
+  .navbar .dropdown li a{
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .navbar .dropdown li a:hover{
+    color: #fff;
+  }
+
   .navbar .dropdown ul a {
     padding: 10px 20px;
     font-size: 15px;
@@ -438,6 +445,13 @@ section {
   .navbar .dropdown>.dropdown-active,
   .navbar .dropdown .dropdown>.dropdown-active {
     display: block;
+  }
+
+  .navbar .dropdown li a{
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .navbar .dropdown li a:hover{
+    color: #fff;
   }
 
   .mobile-nav-show {

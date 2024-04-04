@@ -53,12 +53,12 @@
                 </div>
               </div>
             </div>
-            <form action="#!">
+            <form action="/signin" method="post">
               <div class="row gy-3 overflow-hidden">
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
-                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="userid" id="userid" placeholder="name@example.com" required>
+                    <label for="userid" class="form-label">User id</label>
                   </div>
                 </div>
                 <div class="col-12">
@@ -67,9 +67,24 @@
                     <label for="password" class="form-label">Password</label>
                   </div>
                 </div>
+                <div class="form-floating mb-3">
+                  <div class="form-check">
+                  <input class="form-check-input" type="radio" name="role" value="vendor" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Vendor
+                  </label>
+                </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="role" value="admin" id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Admin
+                  </label>
+              </div>
+                </div>
                 <div class="col-12">
                   <div class="d-grid">
                     <button class="btn btn-success btn-lg" type="submit">Log in now</button>
+                    ${sms}
                   </div>
                 </div>
               </div>

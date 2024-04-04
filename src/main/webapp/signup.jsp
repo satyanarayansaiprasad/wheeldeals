@@ -43,13 +43,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="#!">
+                                    <form action="/signup" method="post">
                                         <div class="row gy-3 overflow-hidden">
                                             <div class="col-12">
                                                 <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" name="fullName"
                                                         id="fullName" placeholder="Full Name" required>
                                                     <label for="fullName" class="form-label">Full Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" name="userid"
+                                                        id="userid" placeholder="User id" required>
+                                                    <label for="userid" class="form-label">User Id</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -88,19 +95,17 @@
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        name="iAgree" id="iAgree" required>
-                                                    <label class="form-check-label text-secondary" for="iAgree">
-                                                        I agree to the <a href="/tac"
-                                                            class="link-primary text-decoration-none">terms and
-                                                            conditions</a>
-                                                    </label>
+                                                <div class="form-floating mb-3">
+                                                    <input type="file" class="form-control" name="img"
+                                                        id="img" >
+                                                    <label for="img" class="form-label">Choose your photo</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="d-grid">
                                                     <button class="btn btn-dark btn-lg" type="submit">Sign up</button>
+                                                    <br>
+                                                    ${sms}
                                                 </div>
                                             </div>
                                         </div>
@@ -120,4 +125,5 @@
         </div>
     </div>
 </section>
+
 <jsp:include page="footer.jsp" />
