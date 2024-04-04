@@ -46,10 +46,10 @@ public class vwd {
         return "vendor/bidhistory";
     }
 
-    // @GetMapping("/bids")
-    // public static String bids() {
-    //     return "vendor/bidstatus";
-    // }
+    @GetMapping("/bids")
+    public static String bids() {
+        return "vendor/bidstatus";
+    }
 
     @GetMapping("/Account")
     public String avendor(Model mod,HttpSession session,HttpServletRequest request ){
