@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*" %>
+<% byte[] s = (byte[])request.getAttribute("imgdata"); %>
 <jsp:include page="aheader.jsp" />
 
 <!-- ======= Breadcrumbs ======= -->
@@ -17,7 +19,7 @@
 
 
 
-  <table class="table table-dark table-hover mt-5 table-bordered"" >
+  <table class="table table-dark table-hover mt-5 table-bordered" >
     <tr class="table-success">
       <th class="p-4">vendor id</th>
       <th class="p-4">Name</th>
@@ -25,6 +27,7 @@
       <th class="p-4">Email</th>
       <th class="p-4">Company</th>
       <th class="p-4">Address</th>
+      <th class="p-4">Image</th>
       <th class="p-4">Action</th>
     </tr>
     <c:forEach var="vendor" items="${vendordetails}">
@@ -35,6 +38,7 @@
         <td class="p-4">${vendor.vemail}</td>
         <td class="p-4">${vendor.company}</td>
         <td class="p-4">${vendor.address}</td>
+        <td class="p-4"><img src="data:image/jpeg;base64,<%= Base64.getEncoder().encodeToString(s)%>" alt="vendor photo" width="100px" /></td>
         <td>
           <form action="/removevendor" method="post">
             <input type="hidden" name="vendor_id" value="${vendor.vendor_id}">

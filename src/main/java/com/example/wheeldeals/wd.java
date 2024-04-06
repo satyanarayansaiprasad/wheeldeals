@@ -1,5 +1,6 @@
 package com.example.wheeldeals;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -67,14 +69,13 @@ public class wd {
     public String signup_save(Model m, @RequestParam("userid") String userid, @RequestParam("password") String password,
             @RequestParam("fullName") String fullName, @RequestParam("number") String number,
             @RequestParam("email") String email, @RequestParam("company") String company,
-            @RequestParam("address") String address) {
+            @RequestParam("address") String address, @RequestParam("f") MultipartFile f) throws IOException {
         try {
-            jdbc.execute("INSERT INTO vendor VALUES('" + userid + "','" + password + "','" + fullName + "','" + number
-                    + "','" + email + "','" + company + "','" + address + "')");
+            String sql = "insert into vendor values (?, ?, ?, ?, ?, ?, ?, ?)";
+            jdbc.update(sql, userid, password, fullName, number, email, company, address, f.getBytes());
             m.addAttribute("sms", "Registration success");
             return "signup";
         } catch (Exception e) {
-            // Handle any other exceptions that may occur during signup
             m.addAttribute("sms", "An error occurred during registration. Please try again.");
             return "signup";
         }
@@ -83,7 +84,7 @@ public class wd {
     @PostMapping("/contact")
     public  String contact(Model m,  @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("subject") String subject, @RequestParam("message") String message){
         try {
-            jdbc.execute("INSERT INTO contact_information(iname, iemail, isubject, imessage) VALUES('" + name + "','" + email + "','" + subject + "','" + message + "')");
+            jdbc.update("INSERT INTO contact_information(iname, iemail, isubject, imessage) VALUES('" + name + "','" + email + "','" + subject + "','" + message + "')");
             m.addAttribute("sms", "Your query sent successfully");
             return "contact";
         } catch (Exception e) {

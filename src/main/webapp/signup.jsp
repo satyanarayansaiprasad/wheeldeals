@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="/signup" method="post">
+                                    <form action="/signup" method="post" enctype="multipart/form-data">
                                         <div class="row gy-3 overflow-hidden">
                                             <div class="col-12">
                                                 <div class="form-floating mb-3">
@@ -96,8 +96,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-floating mb-3">
-                                                    <input type="file" class="form-control" name="img"
-                                                        id="img" >
+                                                    <input type="file" class="form-control" name="f" id="img" required>
                                                     <label for="img" class="form-label">Choose your photo</label>
                                                 </div>
                                             </div>

@@ -37,6 +37,7 @@ public class awd {
         String sql = "select * from vendor";
         List<Map<String, Object>> vendor = jdbc.queryForList(sql);
         mod.addAttribute("vendordetails", vendor);
+        mod.addAttribute("imgdata", vendor.get(0).get("photo"));
         return "admin/vendor";
     }
 
