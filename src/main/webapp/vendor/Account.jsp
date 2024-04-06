@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.*" %>
 <jsp:include page="vheader.jsp" />
 
 <!-- ======= Breadcrumbs ======= -->
@@ -23,7 +24,7 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="" alt="avatar"
+              <img src="data:image/jpeg;base64,${Base64.getEncoder().encodeToString(vendor.photo)}"
                 class="rounded-circle img-fluid" style="width: 150px;">
               <h5 class="my-3">${vendor.vname}</h5>
               
