@@ -13,3 +13,21 @@
         </div>
       </div>
     </div><!-- End Breadcrumbs -->
+    <section id="service" class="services pt-0">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <span>Notice</span>
+          <h2>Notice</h2>
+        </div>
+        <div class="col-log-10 m-auto border">
+          <marquee behavior="scroll" direction="up" scrolldelay="70" class="text-center" onmouseover="this.stop()" onmouseout="this.start()">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam maxime, deserunt in repellendus enim reprehenderit excepturi! Nihil perspiciatis voluptates exercitationem iure veniam! Molestiae distinctio adipisci inventore debitis labore dolor.</p> <br>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam maxime, deserunt in repellendus enim reprehenderit excepturi! Nihil perspiciatis voluptates exercitationem iure veniam! Molestiae distinctio adipisci inventore debitis labore dolor.</p> <br>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam maxime, deserunt in repellendus enim reprehenderit excepturi! Nihil perspiciatis voluptates exercitationem iure veniam! Molestiae distinctio adipisci inventore debitis labore dolor.t</p> <br>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam maxime, deserunt in repellendus enim reprehenderit excepturi! Nihil perspiciatis voluptates exercitationem iure veniam! Molestiae distinctio adipisci inventore debitis labore dolor.</p> <br>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam maxime, deserunt in repellendus enim reprehenderit excepturi! Nihil perspiciatis voluptates exercitationem iure veniam! Molestiae distinctio adipisci inventore debitis labore dolor.</p> <br>
+          </marquee>
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->

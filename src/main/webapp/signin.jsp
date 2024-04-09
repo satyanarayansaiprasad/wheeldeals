@@ -84,6 +84,7 @@
                 <div class="col-12">
                   <div class="d-grid">
                     <button class="btn btn-success btn-lg" type="submit">Log in now</button>
+                    <br>
                     ${sms}
                   </div>
                 </div>

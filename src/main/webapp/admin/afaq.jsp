@@ -73,7 +73,7 @@
                 <td>
                     <form action="/managefaq" method="post">
                         <input type="hidden" name="id" value="${faqd.id}">
-                        <input type="submit" name="btn" class="btn btn-md btn-success" value="Edit">
+                        <input type="submit" name="btn" class="btn btn-md btn-success" value="Edit"><br> <br>
                         <input type="submit" name="btn" class="btn btn-md btn-success" value="Delete">
                     </form>
 

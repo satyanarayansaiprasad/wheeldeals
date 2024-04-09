@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -20,6 +21,20 @@ public class vwd {
     JdbcTemplate jdbc;
 
     // vendor
+    @PostMapping("/Account")
+    public String updateAccount(@RequestBody DataObject data ,Model m){
+        // System.out.println(data.getVname());
+        // System.out.println(data.getVemail());
+        String vendor_id=data.getV_id();
+        String vname=data.getVname();
+        String vmobile=data.getVmob();
+        String vemail=data.getVemail();
+        String company=data.getVcom();
+        String address=data.getVadr();
+        String sql="update vendor set vname=?,vmobile=?,vemail=?,company=?,address=? where vendor_id=?";
+        jdbc.update(sql,vname,vmobile,vemail,company,address,vendor_id);
+        return "vendor/Account";
+    }
 
     @GetMapping("/vindex")
     public static String vindex() {

@@ -25,7 +25,8 @@ public class wd {
     JdbcTemplate jdbc;
 
     @PostMapping("/signin")
-    public String signin(Model m, HttpSession session, @RequestParam("userid") String user_id, @RequestParam("password") String password, @RequestParam("role") String role) {
+    public String signin(Model m, HttpSession session, @RequestParam("userid") String user_id,
+            @RequestParam("password") String password, @RequestParam("role") String role) {
 
         if (role.equals("admin")) {
 
@@ -37,25 +38,33 @@ public class wd {
             }
         } else if (role.equals("vendor")) {
             ArrayList<String> ali = new ArrayList<String>();
-            List<String> li = jdbc.query(
-                    "select vendor_id, password, vname from vendor where vendor_id='" + user_id + "' and password='" + password
-                            + "' ",
-                    new RowMapper<String>() {
-                        public String mapRow(ResultSet rs, int rowNum) throws SQLException {
-                            ali.add(rs.getString(1)); // vendor_id
-                            ali.add(rs.getString(2)); // password
-                            ali.add(rs.getString(3)); // password
-                            return "";
-                        }
-                    });
-            session.setAttribute("user_id", ali.get(0));
-            session.setAttribute("password", ali.get(1));
-            
-            if ((ali.get(0)).equals(user_id) && ali.get(1).equals(password)) {
-                m.addAttribute("userid", ali.get(0));
-                m.addAttribute("vname", ali.get(2));
-                return "vendor/vindex";
-            } else {
+            try {
+                List<String> li = jdbc.query(
+                        "select vendor_id, password, vname from vendor where vendor_id='" + user_id + "' and password='"
+                                + password + "' ",
+                        new RowMapper<String>() {
+                            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                                ali.add(rs.getString(1)); // vendor_id
+                                ali.add(rs.getString(2)); // password
+                                ali.add(rs.getString(3)); // vname
+                                return "";
+                            }
+                        });
+
+                session.setAttribute("user_id", ali.get(0));
+                session.setAttribute("password", ali.get(1));
+
+                if (ali.get(0).equals(user_id) && ali.get(1).equals(password)) {
+                    m.addAttribute("userid", ali.get(0));
+                    m.addAttribute("vname", ali.get(2));
+                    return "vendor/vindex";
+                } else {
+                    m.addAttribute("sms", "Invalid username or password");
+                    return "signin";
+                }
+            } catch (Exception e) {
+                // Handle any unexpected errors
+                m.addAttribute("sms", "Invalid username or password");
                 return "signin";
             }
         } else {
@@ -63,7 +72,6 @@ public class wd {
         }
 
     }
-
 
     @PostMapping("/signup")
     public String signup_save(Model m, @RequestParam("userid") String userid, @RequestParam("password") String password,
@@ -82,9 +90,11 @@ public class wd {
     }
 
     @PostMapping("/contact")
-    public  String contact(Model m,  @RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("subject") String subject, @RequestParam("message") String message){
+    public String contact(Model m, @RequestParam("name") String name, @RequestParam("email") String email,
+            @RequestParam("subject") String subject, @RequestParam("message") String message) {
         try {
-            jdbc.update("INSERT INTO contact_information(iname, iemail, isubject, imessage) VALUES('" + name + "','" + email + "','" + subject + "','" + message + "')");
+            jdbc.update("INSERT INTO contact_information(iname, iemail, isubject, imessage) VALUES('" + name + "','"
+                    + email + "','" + subject + "','" + message + "')");
             m.addAttribute("sms", "Your query sent successfully");
             return "contact";
         } catch (Exception e) {
@@ -94,13 +104,11 @@ public class wd {
         }
     }
 
-    
-
     @GetMapping("/")
     public String index(Model mod) {
-        String sql="select questions, answers from faq";
-        List<Map<String,Object>> faq=jdbc.queryForList(sql);
-        mod.addAttribute("faqdetails", faq); 
+        String sql = "select questions, answers from faq";
+        List<Map<String, Object>> faq = jdbc.queryForList(sql);
+        mod.addAttribute("faqdetails", faq);
         return "index";
     }
 
@@ -118,17 +126,18 @@ public class wd {
     public static String contact() {
         return "contact";
     }
+
     @GetMapping("/faq")
-    public  String homeFaq(Model mod) {
-        String sql="select questions, answers from faq";
-        List<Map<String,Object>> faq=jdbc.queryForList(sql);
-        mod.addAttribute("faqdetails", faq);        
+    public String homeFaq(Model mod) {
+        String sql = "select questions, answers from faq";
+        List<Map<String, Object>> faq = jdbc.queryForList(sql);
+        mod.addAttribute("faqdetails", faq);
         return "faq";
     }
 
     // @GetMapping("/faq")
     // public static String faq() {
-    //     return "faq";
+    // return "faq";
     // }
 
     @GetMapping("/signin")
